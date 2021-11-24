@@ -72,7 +72,7 @@ function gen_LinkFlags() {
 
 function gen_Data_string() {
         ITEM_SIZE=$(printf '%04x' $((${#1})))
-        echo '\x'${ITEM_SIZE:2:2}'\x'${ITEM_SIZE:0:2}$(ascii2hex ${1})
+        echo '\x'${ITEM_SIZE:2:2}'\x'${ITEM_SIZE:0:2}$(ascii2hex "${1}")
 }
 
 function gen_IDLIST() {
@@ -143,7 +143,7 @@ else
 	HasWorkingDir=0x00
 fi
 if [ ! -z "${param_HasArguments}" ]; then
-	STRING_DATA=${STRING_DATA}$(gen_Data_string ${param_HasArguments})
+	STRING_DATA=${STRING_DATA}$(gen_Data_string "${param_HasArguments}")
 else
 	HasArguments=0x00
 fi
